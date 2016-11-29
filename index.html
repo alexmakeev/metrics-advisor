@@ -19,7 +19,9 @@
     <div class="rooms">
     {{#variants}}
     <div class="room" style="width:{{Math.round(this.1)}}px; height:{{Math.round(this.2)}}px;">
-        {{this.1}} х {{this.2}} х {{this.0}}
+        {{Math.round(this.1)}}cm х {{Math.round(this.2)}}cm х {{Math.round(this.0)}}cm<br>
+        Vurf = {{Math.round(this.3*10000) / 10000}}<br>
+        SVurf ={{Math.round(this.4*10000) / 10000}}
     </div>
     {{/}}
     </div>

@@ -122,11 +122,13 @@ $(function () {
             if (Math.abs(new_height - good_quantities[i0] * triedinstvo[0].length) > new_height * precision) continue;
             for (var i1 in good_quantities) {
               for (var i2 in good_quantities) {
+                var vurf = get_vurf(good_quantities[i0] * triedinstvo[0].length, good_quantities[i1] * triedinstvo[1].length, good_quantities[i2] * triedinstvo[2].length);
+                var svurf = get_vurf(triedinstvo[0].length, triedinstvo[1].length, triedinstvo[2].length);
                 if (is_good_vurf(good_quantities[i0] * triedinstvo[0].length, good_quantities[i1] * triedinstvo[1].length, good_quantities[i2] * triedinstvo[2].length)){
                   if (good_quantities[i1] * triedinstvo[1].length > good_quantities[i2] * triedinstvo[2].length) {
-                    variants.push([good_quantities[i0] * triedinstvo[0].length, good_quantities[i1] * triedinstvo[1].length, good_quantities[i2] * triedinstvo[2].length]);
+                    variants.push([good_quantities[i0] * triedinstvo[0].length, good_quantities[i1] * triedinstvo[1].length, good_quantities[i2] * triedinstvo[2].length, vurf, svurf]);
                   } else {
-                    variants.push([good_quantities[i0] * triedinstvo[0].length, good_quantities[i2] * triedinstvo[2].length, good_quantities[i1] * triedinstvo[1].length]);
+                    variants.push([good_quantities[i0] * triedinstvo[0].length, good_quantities[i2] * triedinstvo[2].length, good_quantities[i1] * triedinstvo[1].length, vurf, svurf]);
                   }
                 }
               }
