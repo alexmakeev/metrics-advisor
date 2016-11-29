@@ -14,8 +14,15 @@
 <h1>Metrics Advisor</h1>
 
 <script id='template' type='text/html'>
-    Please, select room height <input type="number" class="height-input" value="280" /> cm<br>
-
+    Please, select room height <input type="number" class="height-input" value="{{height}}" /> cm<br>
+    {{variants.length}}
+    <div class="rooms">
+    {{#variants}}
+    <div class="room" style="width:{{Math.round(this.1)}}px; height:{{Math.round(this.2)}}px;">
+        {{this.1}} х {{this.2}} х {{this.0}}
+    </div>
+    {{/}}
+    </div>
 </script>
 
 <div id='container'></div>
