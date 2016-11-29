@@ -1,0 +1,12 @@
+.height-input {
+    width: 50px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    right:0;
+    padding: 10px;
+    font-size: small;
+    color: #777;
+}
