@@ -8,20 +8,29 @@
     <script src="js/libs/ractive.js"></script>
     <script src="js/main.js"></script>
 
-    <title>Metrics Advisor</title>
+    <title>Помощник выбора размеров комнаты</title>
 </head>
 <body>
-<h1>Metrics Advisor</h1>
-
+<h1>Помощник выбора размеров комнаты</h1>
+(Отнормирован на Олю!!! позже могу добавить нормировку по росту хозяйки)
 <script id='template' type='text/html'>
-    Please, select room height <input type="number" class="height-input" value="{{height}}" /> cm<br>
-    {{variants.length}}
+    <input type="checkbox" checked="{{is_thin_room}}">Комната узкая (ширина меньше высоты потолков)<br /><input type="checkbox" checked="{{is_high_room}}">Комната высокая (длина тоже меньше высоты потолков)<br />
+    Выберите высоту потолков:
+    <br>
+    <select value="{{height}}" size="5" style="width:100px;">
+        {{#heights}}
+            <option value="{{this}}">{{this}}</option>
+        {{/heights}}
+    </select>
+
+    <h2>{{selected_str}}</h2>
     <div class="rooms">
     {{#variants}}
-    <div class="room" style="width:{{Math.round(this.1)}}px; height:{{Math.round(this.2)}}px;">
-        {{Math.round(this.1)}}cm х {{Math.round(this.2)}}cm х {{Math.round(this.0)}}cm<br>
-        Vurf = {{Math.round(this.3*10000) / 10000}}<br>
-        SVurf ={{Math.round(this.4*10000) / 10000}}
+    <div class="room" style="width:{{Math.round(this.1)}}px; height:{{Math.round(this.2)}}px;" on-click="set('selected_str', Math.round(this.0) + ' x ' + Math.round(this.1) + ' х ' + Math.round(this.2) + '')">
+        {{Math.round(this.0)}}cm x {{Math.round(this.1)}}cm х {{Math.round(this.2)}}cm<br>
+        Vurf = {{Math.round(this.3*10000) / 10000}}, Scale = {{this.4}}<br>
+        {{#if is_thin_room}}HW{{else}}WH{{/if}} = {{this.5}}<br>
+        {{#if is_high_room}}HL{{else}}WL{{/if}} = {{this.6}}
     </div>
     {{/}}
     </div>
